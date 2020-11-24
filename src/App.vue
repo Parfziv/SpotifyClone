@@ -10,8 +10,8 @@ import SpotifyNepal from "./components/SpotifyNepal";
 export default {
   components:{
     SpotifyNepal,
-  }
-
+  },
+  
 }
 </script>
 

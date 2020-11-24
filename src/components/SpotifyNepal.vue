@@ -262,16 +262,17 @@
         <div class="flex items-center px-6">
           <a href="#"><img src="https://images.unsplash.com/photo-1596125099843-4c28a6287ddb?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8M3x8YWxidW0lMjBhcnR8ZW58MHx8MHw%3D&auto=format&fit=crop&w=500&q=60" alt="album art" class="h-14 w-14 object-cover"></a>
           <div class="ml-3">
-            <div><a href="#" class="text-gray-500 hover:text-white hover:underline">Skinny Love</a></div>
-            <div><a href="#" class="text-gray-500 text-xs hover:text-white hover:underline">Bon Iver</a></div>
+            <div><a href="#" class="text-gray-500 hover:text-white hover:underline">{{current.title}}</a></div>
+            <div><a href="#" class="text-gray-500 text-xs hover:text-white hover:underline">{{current.artist}}</a></div>
           </div>
         </div>
         <div class="flex flex-col justify-center">
           <div class="flex justify-center">
           <button><svg class="w-6 h-6 text-gray-500 hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z"></path></svg></button>
-          <button class="ml-4"><svg class="w-6 h-6 text-gray-500 hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M15.707 15.707a1 1 0 01-1.414 0l-5-5a1 1 0 010-1.414l5-5a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 010 1.414zm-6 0a1 1 0 01-1.414 0l-5-5a1 1 0 010-1.414l5-5a1 1 0 011.414 1.414L5.414 10l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"></path></svg></button>
-          <button class="ml-4"><svg class="w-6 h-6 text-gray-500 hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg></button>
-          <button class="ml-4"><svg class="w-6 h-6 text-gray-500 hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 15.707a1 1 0 010-1.414L14.586 10l-4.293-4.293a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z" clip-rule="evenodd"></path><path fill-rule="evenodd" d="M4.293 15.707a1 1 0 010-1.414L8.586 10 4.293 5.707a1 1 0 011.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg></button>
+          <button class="ml-4" @click="prev"><svg class="w-6 h-6 text-gray-500 hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M15.707 15.707a1 1 0 01-1.414 0l-5-5a1 1 0 010-1.414l5-5a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 010 1.414zm-6 0a1 1 0 01-1.414 0l-5-5a1 1 0 010-1.414l5-5a1 1 0 011.414 1.414L5.414 10l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"></path></svg></button>
+          <button class="ml-4" v-if="!isPlaying" @click="play"><svg class="w-6 h-6 text-gray-500 hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg></button>
+          <button  class="ml-4" v-else @click="pause"><svg class="w-6 h-6 text-gray-500 hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg></button>
+          <button class="ml-4" @click="next"><svg class="w-6 h-6 text-gray-500 hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 15.707a1 1 0 010-1.414L14.586 10l-4.293-4.293a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z" clip-rule="evenodd"></path><path fill-rule="evenodd" d="M4.293 15.707a1 1 0 010-1.414L8.586 10 4.293 5.707a1 1 0 011.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg></button>
 
           </div>
           <div class="flex items-center max-w-full justify-center mt-2">
@@ -294,8 +295,72 @@
 
 <script>
 export default {
+  data(){
+    return{
+      current:{},
+      isPlaying: false,
+      index: 0 ,
+      player: new Audio(),
+      songs:[
+        {
+          title: 'Maya ko katha reply',
+          artist: 'Bekcha',
+          src: require('../assets/maya.mp3'),
+        },
+        {
+          title: 'Aayat',
+          artist: 'ArijitSingh',
+          src: require('../assets/aayat.mp3'),
+        },
+        {
+          title: 'Skinny Love',
+          artist: 'BonIver',
+          src: require('../assets/skinny.mp3'),
+        },
+        {
+          title: 'Tum se hi',
+          artist: 'Sujan Dai',
+          src: require('../assets/tumsehi.mp3'),
+        },
+      ],
+    }
+  },
+  methods: {
+    play(song){
+        if(typeof song.src != "undefined"){
+          this.current = song;
+          this.player.src = this.current.src;
+        }
+        this.player.play();
+        this.isPlaying=true;
+    },
+    pause(){
+      this.player.pause();
+      this.isPlaying= false;
+    },
+    next(){
+      this.index++;
+      if(this.index > this.songs.length -1){
+        this.index= 0;
+      }
+      this.current = this.songs[this.index];
+      this.play(this.current);
+    },
+    prev(){
+ this.index--;
+      if(this.index < 0){
+        this.index= this.songs.length - 1;
+      }
+      this.current = this.songs[this.index];
+      this.play(this.current);
+    },
+  },
+    created(){
+    this.current = this.songs[this.index];
+    this.player.src = this.current.src;
+  },
+  }
 
-}
 </script>
 
 <style>
